@@ -2099,7 +2099,7 @@ export const azureOpenAiDefaultApiVersion = "2024-08-01-preview"
 // DeepSeek
 // https://api-docs.deepseek.com/quick_start/pricing
 export type DeepSeekModelId = keyof typeof deepSeekModels
-export const deepSeekDefaultModelId: DeepSeekModelId = "deepseek-chat"
+export const deepSeekDefaultModelId: DeepSeekModelId = "deepseek-v4-flash"
 export const deepSeekModels = {
 	"deepseek-chat": {
 		maxTokens: 8_000,
@@ -2121,6 +2121,28 @@ export const deepSeekModels = {
 		cacheWritesPrice: 0.55,
 		cacheReadsPrice: 0.14,
 	},
+	"deepseek-v4-flash": {
+		maxTokens: 16_000,            
+		contextWindow: 1_000_000,
+		supportsImages: false,        
+		supportsPromptCache: true,
+		inputPrice: 0,
+		outputPrice: .28,           
+		cacheWritesPrice: 0.30,
+		cacheReadsPrice: 0.08,
+	},
+	
+	"deepseek-v4-pro": {
+		maxTokens: 32_000,            
+		contextWindow: 1_000_000,    
+		supportsImages: false,
+		supportsPromptCache: true,
+		inputPrice: 0,
+		outputPrice: 0.87,       //$0.87 (limited-time 75% off*)$3.48     
+		cacheWritesPrice: 0.75,
+		cacheReadsPrice: 0.20,
+	},
+	
 } as const satisfies Record<string, ModelInfo>
 
 // Hugging Face Inference Providers
